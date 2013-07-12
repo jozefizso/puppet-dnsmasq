@@ -28,7 +28,7 @@ describe "dnsmasq" do
     })
 
     should contain_package("dnsmasq").with({
-      :ensure => "2.57-boxen1",
+      :ensure => "2.66-boxen1",
       :name   => "boxen/brews/dnsmasq",
     })
 

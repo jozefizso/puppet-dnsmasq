@@ -1,16 +1,15 @@
 require 'formula'
 
 class Dnsmasq < Formula
-  url 'http://www.thekelleys.org.uk/dnsmasq/dnsmasq-2.57.tar.gz'
   homepage 'http://www.thekelleys.org.uk/dnsmasq/doc.html'
-  sha1 '37e36564f8acfd94af0455fa2a43daf9f2338b76'
-  version '2.57-boxen1'
+  url 'http://www.thekelleys.org.uk/dnsmasq/dnsmasq-2.66.tar.gz'
+  sha256 '36232fa23d1a8efc6f84a29da5ff829c2aa40df857b9116a9320ea37b651a982'
+  version '2.66-boxen1'
 
-  def options
-    [['--with-idn', "Compile with IDN support"]]
-  end
+  option 'with-idn', 'Compile with IDN support'
 
-  depends_on "libidn" if ARGV.include? '--with-idn'
+  depends_on "libidn" if build.include? 'with-idn'
+  depends_on 'pkg-config' => :build
 
   def install
     ENV.deparallelize
